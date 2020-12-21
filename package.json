@@ -10,20 +10,20 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:test-ext.rgb2hex"
+    "onCommand:test-ext.hex2rgb"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "test-ext.rgb2hex",
-        "title": "RGB to HEX"
+        "command": "test-ext.hex2rgb",
+        "title": "hex2rgb"
       }
     ],
     "menus": {
       "editor/context":  [{
         "when": "editorHasSelection",
-        "command": "test-ext.rgb2hex",
+        "command": "test-ext.hex2rgb",
         "group": "navigation"
       }]
     }
