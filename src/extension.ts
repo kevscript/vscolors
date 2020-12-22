@@ -16,55 +16,41 @@ export function activate(context: vscode.ExtensionContext) {
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
 	// The commandId parameter must match the command field in package.json
-	let hexToRgb = vscode.commands.registerCommand('test-ext.hex2rgb', () => {
-    // The code you place here will be executed every time your command is executed
-    const editor = vscode.window.activeTextEditor;
-    const selection = editor?.selection;
-    const selectedText = editor?.document.getText(selection).trim();
+	const hexToRgb = vscode.commands.registerCommand('test-ext.hex2rgb', () => {
+		const editor = vscode.window.activeTextEditor;
+    if (editor) {
+			const document = editor.document;
+			const selection = editor.selection;
 
-    if (selectedText) {
-      const colorFormat = getColorFormat(selectedText);
-
-      if (colorFormat) {
-        const rgb = hex2Rgb(selectedText);
-
-        if (rgb) {
-          vscode.window.showInformationMessage(`${rgb}`);
-          editor?.edit(editBuilder => {
-            if(selection) {editBuilder.replace(selection, rgb);};
-          });
-        } else {
-          vscode.window.showErrorMessage(`${selectedText} couldn't resolve to an RGB value`);
-        }
-      }
-    }
+			// Get the word within the selection
+      const selectedText = document.getText(selection).trim();
+      // const colorFormat = getColorFormat(selectedText);
+      // console.log(colorFormat);
+      const hsl = hex2Rgb(selectedText);
+			editor.edit(editBuilder => {
+				editBuilder.replace(selection, hsl);
+			});
+		}
   });
 
-  let hexToHsl = vscode.commands.registerCommand('test-ext.hex2hsl', () => {
+  const hexToHsl = vscode.commands.registerCommand('test-ext.hex2hsl', () => {
     const editor = vscode.window.activeTextEditor;
-    const selection = editor?.selection;
-    const selectedText = editor?.document.getText(selection).trim();
-
-    if (selectedText) {
-      const colorFormat = getColorFormat(selectedText);
-
-      if (colorFormat) {
-        const hsl = hex2Hsl(selectedText);
-
-        if (hsl) {
-          vscode.window.showInformationMessage(`${hsl}`);
-          editor?.edit(editBuilder => {
-            if(selection) {editBuilder.replace(selection, hsl);};
-          });
-        } else {
-          vscode.window.showErrorMessage(`${selectedText} couldn't resolve to a HSL value`);
-        }
-      }
-    }
+    if (editor) {
+			const document = editor.document;
+			const selection = editor.selection;
+			// Get the word within the selection
+      const selectedText = document.getText(selection).trim();
+      // const colorFormat = getColorFormat(selectedText);
+      // console.log(colorFormat);
+      const hsl = hex2Hsl(selectedText);
+			editor.edit(editBuilder => {
+				editBuilder.replace(selection, hsl);
+			});
+		}
   });
-  
-  context.subscriptions.push(hexToRgb);
-  context.subscriptions.push(hexToHsl);
+
+
+  context.subscriptions.push(hexToRgb, hexToHsl);
 }
 
 // this method is called when your extension is deactivated
