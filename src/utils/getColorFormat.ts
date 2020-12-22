@@ -35,6 +35,7 @@ export function getColorFormat(clr: string) {
   );
 
   if (!matchingType) {
+    console.log(matchingType);
     vscode.window.showErrorMessage(`Can't resolve color format of ${clr}`);
     throw new Error(`Can't resolve color format of ${clr}`);
   }

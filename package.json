@@ -10,7 +10,8 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:test-ext.hex2rgb"
+    "onCommand:test-ext.hex2rgb",
+    "onCommand:test-ext.hex2hsl"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -18,14 +19,25 @@
       {
         "command": "test-ext.hex2rgb",
         "title": "hex2rgb"
+      },
+      {
+        "command": "test-ext.hex2hsl",
+        "title": "hex2hsl"
       }
     ],
     "menus": {
-      "editor/context":  [{
-        "when": "editorHasSelection",
-        "command": "test-ext.hex2rgb",
-        "group": "navigation"
-      }]
+      "editor/context":  [
+        {
+          "when": "editorHasSelection",
+          "command": "test-ext.hex2rgb",
+          "group": "navigation"
+        },
+        {
+          "when": "editorHasSelection",
+          "command": "test-ext.hex2hsl",
+          "group": "navigation"
+        }
+      ]
     }
   },
   "scripts": {
