@@ -5,6 +5,7 @@ import { getColorFormat } from './utils/getColorFormat';
 import { hex2Rgb } from './utils/hex/hex2Rgb';
 import { hex2Hsl } from './utils/hex/hex2Hsl';
 
+
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
@@ -24,8 +25,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 			// Get the word within the selection
       const selectedText = document.getText(selection).trim();
-      // const colorFormat = getColorFormat(selectedText);
-      // console.log(colorFormat);
+      const colorFormat = getColorFormat(selectedText);
       const hsl = hex2Rgb(selectedText);
 			editor.edit(editBuilder => {
 				editBuilder.replace(selection, hsl);
@@ -40,8 +40,7 @@ export function activate(context: vscode.ExtensionContext) {
 			const selection = editor.selection;
 			// Get the word within the selection
       const selectedText = document.getText(selection).trim();
-      // const colorFormat = getColorFormat(selectedText);
-      // console.log(colorFormat);
+      const colorFormat = getColorFormat(selectedText);
       const hsl = hex2Hsl(selectedText);
 			editor.edit(editBuilder => {
 				editBuilder.replace(selection, hsl);
