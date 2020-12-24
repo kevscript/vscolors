@@ -29,9 +29,13 @@ export function getColorType(clr: string) {
       regex: /(hsl)a\(\s?(\d{1,3}%?\s?,\s?){3}(1|0?\.\d+)\s?\)/gi
     },
     {
+      type: "hexa",
+      regex: /#([\da-f]{4}){1,2}/gi
+    },
+    {
       type: "hex",
       regex: /#([\da-f]{3}){1,2}/gi
-    },
+    }
   ];
 
   const matchingType = colorTypes.find((type) => type.regex.test(clr) === true);
