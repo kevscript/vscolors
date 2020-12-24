@@ -1,5 +1,3 @@
-import * as vscode from 'vscode';
-
 export function rgbToHex(rgbArr: number[]) {
   return '#' + rgbArr.map(x => {
     const hex = x.toString(16);
