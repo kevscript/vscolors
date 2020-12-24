@@ -10,31 +10,21 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:test-ext.hex2rgb",
-    "onCommand:test-ext.hex2hsl"
+    "onCommand:test-ext.color2Hex"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "test-ext.hex2rgb",
-        "title": "hex2rgb"
-      },
-      {
-        "command": "test-ext.hex2hsl",
-        "title": "hex2hsl"
+        "command": "test-ext.color2Hex",
+        "title": "color to Hex"
       }
     ],
     "menus": {
       "editor/context":  [
         {
           "when": "editorHasSelection",
-          "command": "test-ext.hex2rgb",
-          "group": "navigation"
-        },
-        {
-          "when": "editorHasSelection",
-          "command": "test-ext.hex2hsl",
+          "command": "test-ext.color2Hex",
           "group": "navigation"
         }
       ]
