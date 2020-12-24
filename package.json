@@ -1,7 +1,7 @@
 {
-  "name": "test-ext",
-  "displayName": "test-ext",
-  "description": "",
+  "name": "vscolors",
+  "displayName": "VSColors",
+  "description": "Color Format Converter for VSCode. Supports HEX(A), RGB(A) and HSL(A) formats.",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.52.0"
@@ -10,13 +10,13 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:test-ext.color2Hex"
+    "onCommand:vscolors.color2Hex"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "test-ext.color2Hex",
+        "command": "vscolors.color2Hex",
         "title": "color to Hex"
       }
     ],
@@ -24,7 +24,7 @@
       "editor/context":  [
         {
           "when": "editorHasSelection",
-          "command": "test-ext.color2Hex",
+          "command": "vscolors.color2Hex",
           "group": "navigation"
         }
       ]
