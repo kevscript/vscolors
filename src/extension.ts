@@ -4,6 +4,7 @@ import * as vscode from 'vscode';
 import { getColorType } from './utils/getColorType';
 import { formatColor } from './utils/format';
 import { toHex } from './utils/toHex';
+import { toRgb } from './utils/toRgb';
 
 
 // this method is called when your extension is activated
@@ -30,7 +31,23 @@ export function activate(context: vscode.ExtensionContext) {
 		}
   });
 
-  context.subscriptions.push(color2Hex);
+  const color2Rgb = vscode.commands.registerCommand('vscolors.color2Rgb', () => {
+    const editor = vscode.window.activeTextEditor;
+    if (editor) {
+			const document = editor.document;
+			const selection = editor.selection;
+			// Get the word within the selection
+      const selectedText = document.getText(selection).trim();
+      const colorType = getColorType(selectedText);
+      const formatedColor = formatColor(colorType);
+      const rgb = toRgb(formatedColor);
+      editor.edit(editBuilder => {
+        editBuilder.replace(selection, rgb);
+      });
+		}
+  });
+
+  context.subscriptions.push(color2Hex, color2Rgb);
 }
 
 // this method is called when your extension is deactivated

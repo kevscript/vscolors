@@ -10,7 +10,8 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:vscolors.color2Hex"
+    "onCommand:vscolors.color2Hex",
+    "onCommand:vscolors.color2Rgb"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -18,6 +19,10 @@
       {
         "command": "vscolors.color2Hex",
         "title": "color to Hex"
+      },
+      {
+        "command": "vscolors.color2Rgb",
+        "title": "color to Rgb"
       }
     ],
     "menus": {
@@ -25,6 +30,11 @@
         {
           "when": "editorHasSelection",
           "command": "vscolors.color2Hex",
+          "group": "navigation"
+        },
+        {
+          "when": "editorHasSelection",
+          "command": "vscolors.color2Rgb",
           "group": "navigation"
         }
       ]
