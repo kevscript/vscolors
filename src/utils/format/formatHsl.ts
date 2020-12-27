@@ -1,3 +1,5 @@
+import { hslToRgb } from "../toRgb/hslToRgb";
+
 export function formatHsl(clr: string) {
   // remove all whitepsace
   let hsl: any = clr.replace(/\s/g, "");
@@ -6,8 +8,8 @@ export function formatHsl(clr: string) {
   hsl = hsl.substr(4).split(")")[0].split(sep);
 
   let h: any = hsl[0];
-  let s = parseInt(hsl[1].substr(0,hsl[1].length - 1)) / 100;
-  let l = parseInt(hsl[2].substr(0,hsl[2].length - 1)) / 100;
+  let s = parseInt(hsl[1].substr(0,hsl[1].length - 1));
+  let l = parseInt(hsl[2].substr(0,hsl[2].length - 1));
         
   // Strip label and convert to degrees (if necessary)
   if (h.indexOf("deg") > -1)
@@ -18,6 +20,10 @@ export function formatHsl(clr: string) {
     {h = Math.round((h.substr(0,h.length - 4)) * 360);}
   if (h >= 360)
     {h %= 360;}
+
+  // if % are over 100
+  if (s >= 100) {s = 100;};
+  if (l >= 100) {l = 100;};
 
   return [h, s, l];
 }
