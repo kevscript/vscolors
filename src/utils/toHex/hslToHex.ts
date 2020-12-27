@@ -1,4 +1,8 @@
 export function hslToHex([h, s, l]: number[]) {
+  // Must be fractions of 1
+  s /= 100;
+  l /= 100;
+
   let c = (1 - Math.abs(2 * l - 1)) * s;
   let x = c * (1 - Math.abs((h / 60) % 2 - 1));
   let m = l - c/2;
@@ -19,18 +23,15 @@ export function hslToHex([h, s, l]: number[]) {
   } else if (300 <= h && h < 360) {
     r = c; g = 0; b = x;
   }
-  // Having obtained RGB, convert channels to hex
-  r = Math.round((r + m) * 255).toString(16);
-  g = Math.round((g + m) * 255).toString(16);
-  b = Math.round((b + m) * 255).toString(16);
 
-  // Prepend 0s, if necessary
-  if (r.length === 1)
-    {r = "0" + r;}
-  if (g.length === 1)
-    {g = "0" + g;}
-  if (b.length === 1)
-    {b = "0" + b;}
+  r = Math.round((r + m) * 255);
+  g = Math.round((g + m) * 255);
+  b = Math.round((b + m) * 255);
 
-  return "#" + r + g + b;
+  const [rr, gg, bb]: (string|number)[] = [r,g,b].map(x => {
+    const hex = x.toString(16);
+    return hex.length === 1 ? '0' + hex : hex;
+  });
+  
+  return "#" + rr + gg + bb;
 }

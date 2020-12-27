@@ -6,9 +6,7 @@ import { hexToHex } from './hexToHex';
 import { hslToHex } from './hslToHex';
 
 export function toHex(formatedColor: FormatedColorStringType | FormatedColorArrayType) {
-
   switch (formatedColor.type) {
-
     case "hex":
       return hexToHex(formatedColor.value);
       break;
