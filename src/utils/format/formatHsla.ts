@@ -9,10 +9,10 @@ export function formatHsla(clr: string) {
   if (hsla.indexOf("/") > -1)
     {hsla.splice(3,1);}
     
-  let h = hsla[0];
-  let s = parseInt(hsla[1].substr(0,hsla[1].length - 1)) / 100;
-  let l = parseInt(hsla[2].substr(0,hsla[2].length - 1)) / 100;
-  let a = parseFloat(hsla[3]);
+  let h: any = hsla[0];
+  let s = parseInt(hsla[1].substr(0,hsla[1].length - 1));
+  let l = parseInt(hsla[2].substr(0,hsla[2].length - 1));
+  let a = parseFloat(hsla[3]) >= 1 ? 1 : parseFloat(hsla[3]);
 
   // Strip label and convert to degrees (if necessary)
   if (h.indexOf("deg") > -1)
@@ -28,5 +28,5 @@ export function formatHsla(clr: string) {
   if (s >= 100) {s = 100;};
   if (l >= 100) {l = 100;};
 
-  return [h, s, l, a];
+  return [parseInt(h), s, l, a];
 }

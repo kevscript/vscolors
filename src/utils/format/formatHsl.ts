@@ -1,5 +1,3 @@
-import { hslToRgb } from "../toRgb/hslToRgb";
-
 export function formatHsl(clr: string) {
   // remove all whitepsace
   let hsl: any = clr.replace(/\s/g, "");
@@ -25,5 +23,5 @@ export function formatHsl(clr: string) {
   if (s >= 100) {s = 100;};
   if (l >= 100) {l = 100;};
 
-  return [h, s, l];
+  return [parseInt(h), s, l];
 }
