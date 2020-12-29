@@ -4,6 +4,9 @@ import { FormatedColorStringType, FormatedColorArrayType } from '../format';
 import { rgbToHex } from './rgbToHex';
 import { hexToHex } from './hexToHex';
 import { hslToHex } from './hslToHex';
+import { rgbaToHex } from './rgbaToHex';
+import { hslaToHex } from './hslaToHex';
+import { hexaToHex } from './hexaToHex';
 
 export function toHex(formatedColor: FormatedColorStringType | FormatedColorArrayType) {
   switch (formatedColor.type) {
@@ -20,18 +23,15 @@ export function toHex(formatedColor: FormatedColorStringType | FormatedColorArra
       break;
   
     case "rgba":
-      vscode.window.showErrorMessage(`Can't parse RGBA format to HEX. Needs HEXA (#rrggbbaa).`);
-      throw new Error(`Can't parse RGBA format to HEX. Needs HEXA (#rrggbbaa).`);
+      return rgbaToHex(formatedColor.value);
       break;
 
     case "hsla":
-      vscode.window.showErrorMessage(`Can't parse HSLA format to HEX. Needs HEXA (#rrggbbaa).`);
-      throw new Error(`Can't parse HSLA format to HEX. Needs HEXA (#rrggbbaa).`);
+      return hslaToHex(formatedColor.value);
       break;
 
     case "hexa":
-      vscode.window.showErrorMessage(`Can't parse HEXA format back to HEX.`);
-      throw new Error(`Can't parse HEXA format back to HEX.`);
+      return hexaToHex(formatedColor.value);
       break;
 
     default:
