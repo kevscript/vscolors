@@ -11,7 +11,8 @@
   ],
   "activationEvents": [
     "onCommand:vscolors.color2Hex",
-    "onCommand:vscolors.color2Rgb"
+    "onCommand:vscolors.color2Rgb",
+    "onCommand:vscolors.color2Hsl"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -23,6 +24,10 @@
       {
         "command": "vscolors.color2Rgb",
         "title": "color to Rgb"
+      },
+      {
+        "command": "vscolors.color2Hsl",
+        "title": "color to Hsl"
       }
     ],
     "menus": {
@@ -35,6 +40,11 @@
         {
           "when": "editorHasSelection",
           "command": "vscolors.color2Rgb",
+          "group": "navigation"
+        },
+        {
+          "when": "editorHasSelection",
+          "command": "vscolors.color2Hsl",
           "group": "navigation"
         }
       ]

@@ -5,6 +5,7 @@ import { getColorType } from './utils/getColorType';
 import { formatColor } from './utils/format';
 import { toHex } from './utils/toHex';
 import { toRgb } from './utils/toRgb';
+import { toHsl } from './utils/toHsl';
 
 
 // this method is called when your extension is activated
@@ -47,7 +48,23 @@ export function activate(context: vscode.ExtensionContext) {
 		}
   });
 
-  context.subscriptions.push(color2Hex, color2Rgb);
+  const color2Hsl = vscode.commands.registerCommand('vscolors.color2Hsl', () => {
+    const editor = vscode.window.activeTextEditor;
+    if (editor) {
+			const document = editor.document;
+			const selection = editor.selection;
+			// Get the word within the selection
+      const selectedText = document.getText(selection).trim();
+      const colorType = getColorType(selectedText);
+      const formatedColor = formatColor(colorType);
+      const hsl = toHsl(formatedColor);
+      editor.edit(editBuilder => {
+        editBuilder.replace(selection, hsl);
+      });
+		}
+  });
+
+  context.subscriptions.push(color2Hex, color2Rgb, color2Hsl);
 }
 
 // this method is called when your extension is deactivated
