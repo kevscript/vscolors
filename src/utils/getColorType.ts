@@ -28,7 +28,7 @@ export function getColorType(clr: string) {
     },
     {
       type: "hsla",
-      regex: /^hsla\(\s?\d{1,3}\s?(,\s?\d{1,3}%?){2}\s?,\s?((1|0)?\.\d+)\s?\)/gi
+      regex: /^hsla\(\s?\d{1,3}\s?(,\s?\d{1,3}%?){2}\s?,\s?(1|0?\.\d+)\s?\)/gi
     },
     {
       type: "hex",
