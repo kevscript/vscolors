@@ -14,6 +14,7 @@ export function hexaToHex(clr: string) {
       vscode.window.showErrorMessage(`Can't parse HEXA format to HEX because of opacity value.`);
       throw new Error(`Can't parse HEXA format to HEX because of opacity value.`);
     }
+  // check for short version
   } else if (arr.length === 5) {
     if (arr[arr.length - 1] === 'f' || arr[arr.length - 1] === 'F') {
       arr.splice(4, 1);
@@ -25,5 +26,5 @@ export function hexaToHex(clr: string) {
     }
   }
 
-  throw new Error(`Error in hexaToHsl().`);
+  throw new Error(`Error in hexaToHex().`);
 }
