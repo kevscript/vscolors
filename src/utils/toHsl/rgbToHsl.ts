@@ -1,4 +1,10 @@
-export function rgbToHsl([r, g, b]: number[]) {
+export function rgbToHsl([rr, gg, bb]: number[]) {
+
+  // Make r, g, and b fractions of 1
+  let r = rr /= 255;
+  let g = gg /= 255;
+  let b = bb /= 255;
+
   let cmin = Math.min(r,g,b);
   let cmax = Math.max(r,g,b);
   let delta = cmax - cmin;
