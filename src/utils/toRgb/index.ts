@@ -1,7 +1,10 @@
 import * as vscode from 'vscode';
 import { FormatedColorArrayType, FormatedColorStringType } from '../format';
+import { hexaToRgb } from './hexaToRgb';
 import { hexToRgb } from './hexToRgb';
+import { hslaToRgb } from './hslaToRgb';
 import { hslToRgb } from './hslToRgb';
+import { rgbaToRgb } from './rgbaToRgb';
 import { rgbToRgb } from './rgbToRgb';
 
 export function toRgb(formatedColor: FormatedColorStringType | FormatedColorArrayType) {
@@ -19,18 +22,15 @@ export function toRgb(formatedColor: FormatedColorStringType | FormatedColorArra
       break;
 
     case "hexa":
-      vscode.window.showErrorMessage(`Can't parse HEXA format to RGB because of opacity values.`);
-      throw new Error(`Can't parse HEXA format to RGB because of opacity values.`);
+      return hexaToRgb(formatedColor.value);
       break;
 
     case "rgba":
-      vscode.window.showErrorMessage(`Can't parse RGBA format to RGB because of opacity values.`);
-      throw new Error(`Can't parse RGBA format to RGB because of opacity values.`);
+      return rgbaToRgb(formatedColor.value);
       break;
   
     case "hsla":
-      vscode.window.showErrorMessage(`Can't parse HSLA format to RGB because of opacity values.`);
-      throw new Error(`Can't parse HSLA format to RGB because of opacity values.`);
+      return hslaToRgb(formatedColor.value);
       break;
   
     default:
