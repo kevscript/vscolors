@@ -1,6 +1,11 @@
 import * as vscode from 'vscode';
-import { hexToHex } from './hexToHex';
 
+// HEX TO HEX
+export function hexToHex(hex: string) {
+  return hex;
+}
+
+// HEXA TO HEX
 export function hexaToHex(clr: string) {
   const arr = clr.split('');
 

@@ -1,11 +1,7 @@
-import * as vscode from 'vscode';
 import { FormatedColorArrayType, FormatedColorStringType } from '../format';
-import { hexaToRgb } from './hexaToRgb';
-import { hexToRgb } from './hexToRgb';
-import { hslaToRgb } from './hslaToRgb';
-import { hslToRgb } from './hslToRgb';
-import { rgbaToRgb } from './rgbaToRgb';
-import { rgbToRgb } from './rgbToRgb';
+import { hexToRgb, hexaToRgb } from './hexsToRgb';
+import { hslToRgb, hslaToRgb } from './hslsToRgb';
+import { rgbToRgb, rgbaToRgb } from './rgbsToRgb';
 
 export function toRgb(formatedColor: FormatedColorStringType | FormatedColorArrayType) {
   switch (formatedColor.type) {

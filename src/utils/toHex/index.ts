@@ -1,12 +1,7 @@
-import * as vscode from 'vscode';
-
 import { FormatedColorStringType, FormatedColorArrayType } from '../format';
-import { rgbToHex } from './rgbToHex';
-import { hexToHex } from './hexToHex';
-import { hslToHex } from './hslToHex';
-import { rgbaToHex } from './rgbaToHex';
-import { hslaToHex } from './hslaToHex';
-import { hexaToHex } from './hexaToHex';
+import { hexToHex, hexaToHex } from './hexsToHex';
+import { rgbToHex, rgbaToHex } from './rgbsToHex';
+import { hslToHex, hslaToHex } from './hslsToHex';
 
 export function toHex(formatedColor: FormatedColorStringType | FormatedColorArrayType) {
   switch (formatedColor.type) {

@@ -1,3 +1,6 @@
+import * as vscode from 'vscode';
+
+// RGB TO HSL
 export function rgbToHsl([rr, gg, bb]: number[]) {
 
   // Make r, g, and b fractions of 1
@@ -27,4 +30,15 @@ export function rgbToHsl([rr, gg, bb]: number[]) {
   l = +(l * 100).toFixed(1);
 
   return "hsl(" + h + ", " + Math.round(s) + "%, " + Math.round(l) + "%)";
+}
+
+
+// RGBA TO HSL
+export function rgbaToHsl([r, g, b, a]: number[]) {
+  if (a === 1) {
+    return rgbToHsl([r, g, b]);
+  } else {
+    vscode.window.showErrorMessage(`Can't parse RGBA format to HSL because of opacity value.`);
+    throw new Error(`Can't parse RGBA format to HSL because of opacity value.`);
+  }
 }

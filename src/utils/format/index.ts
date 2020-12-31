@@ -1,10 +1,7 @@
 import { ColorType } from '../getColorType';
-import { formatHex } from './formatHex';
-import { formatHexa } from './formatHexa';
-import { formatHsl } from './formatHsl';
-import { formatHsla } from './formatHsla';
-import { formatRgb } from './formatRgb';
-import { formatRgba } from './formatRgba';
+import { formatHex, formatHexa } from './formatHexs';
+import { formatHsl, formatHsla } from './formatHsls';
+import { formatRgb, formatRgba } from './formatRgbs';
 
 
 export type FormatedColorStringType = {

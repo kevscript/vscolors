@@ -1,6 +1,14 @@
 import * as vscode from 'vscode';
-import { rgbToHex } from './rgbToHex';
 
+// RGB TO HEX
+export function rgbToHex(rgbArr: number[]) {
+  return '#' + rgbArr.map(x => {
+    const hex = x.toString(16);
+    return hex.length === 1 ? '0' + hex : hex;
+  }).join('');
+}
+
+// RGBA TO HEX
 export function rgbaToHex([r, g, b, a]: number[]) {
   if (a === 1) {
     return rgbToHex([r, g, b]);

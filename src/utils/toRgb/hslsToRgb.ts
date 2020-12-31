@@ -1,3 +1,5 @@
+import * as vscode from 'vscode';
+
 export function hslToRgb([h, s, l]: number[]) {
   // Must be fractions of 1
   s /= 100;
@@ -28,4 +30,14 @@ export function hslToRgb([h, s, l]: number[]) {
   b = Math.round((b + m) * 255);
 
   return "rgb(" + r + ", " + g + ", " + b + ")";
+}
+
+
+export function hslaToRgb([h, s, l, a]: number[]) {
+  if (a === 1) {
+    return hslToRgb([h, s, l]);
+  } else {
+    vscode.window.showErrorMessage(`Can't parse HSLA format to RGB because of opacity value.`);
+    throw new Error(`Can't parse HSLA format to RGB because of opacity value.`);
+  }
 }

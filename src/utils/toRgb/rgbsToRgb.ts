@@ -1,5 +1,8 @@
 import * as vscode from 'vscode';
-import { rgbToRgb } from './rgbToRgb';
+
+export function rgbToRgb(rgbArr: number[]) {
+  return `rgb(${rgbArr[0]}, ${rgbArr[1]}, ${rgbArr[2]})`;
+}
 
 export function rgbaToRgb([r, g, b, a]: number[]) {
   if (a === 1) {

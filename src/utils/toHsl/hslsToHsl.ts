@@ -1,6 +1,12 @@
 import * as vscode from 'vscode';
-import { hslToHsl } from "./hslToHsl";
 
+// HSL TO HSL
+export function hslToHsl([h, s, l]: number[]) {
+  return `hsl(${h}, ${s}%, ${l}%)`;
+}
+
+
+// HSLA TO HSL
 export function hslaToHsl([h, s, l, a]: number[]) {
   if (a === 1) {
     return hslToHsl([h, s, l]);

@@ -1,3 +1,7 @@
+import * as vscode from 'vscode';
+
+
+// HSL TO HEX
 export function hslToHex([h, s, l]: number[]) {
   // Must be fractions of 1
   s /= 100;
@@ -34,4 +38,15 @@ export function hslToHex([h, s, l]: number[]) {
   });
   
   return "#" + rr + gg + bb;
+}
+
+
+// HSLA TO HEX
+export function hslaToHex([h, s, l, a]: number[]) {
+  if (a === 1) {
+    return hslToHex([h, s, l]);
+  } else {
+    vscode.window.showErrorMessage(`Can't parse HSLA format to HEX because of opacity value.`);
+    throw new Error(`Can't parse HSLA format to HEX because of opacity value.`);
+  }
 }
