@@ -19,15 +19,15 @@
     "commands": [
       {
         "command": "vscolors.color2Hex",
-        "title": "color to Hex"
+        "title": "Color to HEX"
       },
       {
         "command": "vscolors.color2Rgb",
-        "title": "color to Rgb"
+        "title": "Color to RGB"
       },
       {
         "command": "vscolors.color2Hsl",
-        "title": "color to Hsl"
+        "title": "Color to HSL"
       }
     ],
     "menus": {
