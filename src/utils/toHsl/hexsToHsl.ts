@@ -1,5 +1,3 @@
-import * as vscode from 'vscode';
-
 // HEX TO HSL
 export function hexToHsl(clr: string) {
   const hex = clr.replace(/\s/g, "");
@@ -51,6 +49,63 @@ export function hexToHsl(clr: string) {
   return "hsl(" + h + ", " + Math.round(s) + "%, " + Math.round(l) + "%)";
 }
 
+// HEX TO HSLA
+export function hexToHsla(clr: string) {
+  const hex = hexToHsl(clr);
+  return `${hex}ff`;
+}
+
+// HEXA TO HSLA
+export function hexaToHsla(hexa: string) {
+  let r: any = 0;
+  let g: any = 0;
+  let b: any = 0;
+  let a: any = 1;
+
+  if (hexa.length === 5) {
+    r = "0x" + hexa[1] + hexa[1];
+    g = "0x" + hexa[2] + hexa[2];
+    b = "0x" + hexa[3] + hexa[3];
+    a = "0x" + hexa[4] + hexa[4];
+  } else if (hexa.length === 9) {
+    r = "0x" + hexa[1] + hexa[2];
+    g = "0x" + hexa[3] + hexa[4];
+    b = "0x" + hexa[5] + hexa[6];
+    a = "0x" + hexa[7] + hexa[8];
+  }
+
+  r /= 255;
+  g /= 255;
+  b /= 255;
+  let cmin = Math.min(r,g,b),
+      cmax = Math.max(r,g,b),
+      delta = cmax - cmin,
+      h = 0,
+      s = 0,
+      l = 0;
+
+  if (delta === 0)
+    {h = 0;}
+  else if (cmax === r)
+    {h = ((g - b) / delta) % 6;}
+  else if (cmax === g)
+    {h = (b - r) / delta + 2;}
+  else
+    {h = (r - g) / delta + 4;}
+
+  h = Math.round(h * 60);
+
+  if (h < 0)
+    {h += 360;}
+
+  l = (cmax + cmin) / 2;
+  s = delta === 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
+  s = +(s * 100).toFixed(1);
+  l = +(l * 100).toFixed(1);
+  a = (a / 255).toFixed(2);
+
+  return "hsla("+ h + ", " + Math.round(s) + "%, " + Math.round(l) + "%, " + a + ")";
+}
 
 // HEXA TO HSL
 export function hexaToHsl(clr: string) {
@@ -63,8 +118,7 @@ export function hexaToHsl(clr: string) {
       const hex = arr.join('');
       return hexToHsl(hex);
     } else {
-      vscode.window.showErrorMessage(`Can't parse HEXA format to HSL because of opacity value.`);
-      throw new Error(`Can't parse HEXA format to HSL because of opacity value.`);
+      return hexaToHsla(clr);
     }
   // check for short version
   } else if (arr.length === 5) {
@@ -73,8 +127,7 @@ export function hexaToHsl(clr: string) {
       const hex = arr.join('');
       return hexToHsl(hex);
     } else {
-      vscode.window.showErrorMessage(`Can't parse HEXA format to HSL because of opacity value.`);
-      throw new Error(`Can't parse HEXA format to HSL because of opacity value.`);
+      return hexaToHsla(clr);
     }
   }
 

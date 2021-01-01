@@ -8,7 +8,6 @@ export function hexToHex(hex: string) {
 // HEXA TO HEX
 export function hexaToHex(clr: string) {
   const arr = clr.split('');
-
   // check for hexa full format
   if (arr.length === 9) {
     if ((arr[arr.length - 1] === 'f' || arr[arr.length - 1] === 'F') && (arr[arr.length - 2] === 'f' || arr[arr.length - 2] === 'F')) {
@@ -32,4 +31,18 @@ export function hexaToHex(clr: string) {
   }
 
   throw new Error(`Error in hexaToHex().`);
+}
+
+// HEW TO HEXA
+export function hexToHexa(hex: string) {
+  if (hex.length === 4) {
+    return `${hex}f`;
+  } else if (hex.length === 7) {
+    return `${hex}ff`;
+  }
+}
+
+// HEXA TO HEXA
+export function hexaToHexa(hexa: string) {
+  return hexa;
 }
