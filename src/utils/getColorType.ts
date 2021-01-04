@@ -24,11 +24,11 @@ export function getColorType(clr: string) {
     },
     {
       type: "hsl",
-      regex: /^hsl\(\s?\d{1,3}\s?(,\s?\d{1,3}%?){2}\s?\)/gi
+      regex: /^hsl\(\s?\d{1,3}\s?(,\s?\d{1,3}%){2}\s?\)/gi
     },
     {
       type: "hsla",
-      regex: /^hsla\(\s?\d{1,3}\s?(,\s?\d{1,3}%?){2}\s?,\s?(1|0?\.\d+)\s?\)/gi
+      regex: /^hsla\(\s?\d{1,3}\s?(,\s?\d{1,3}%){2}\s?,\s?(1|0?\.\d+)\s?\)/gi
     },
     {
       type: "hex",
@@ -44,7 +44,7 @@ export function getColorType(clr: string) {
   const matchingType = colorTypes.find((type) => type.regex.test(color) === true);
   if (!matchingType) {
     vscode.window.showErrorMessage(`Can't resolve color format of ${clr}`);
-    throw new Error(`Can't resolve color format of ${clr}`);
+    throw Error(`Can't resolve color format of ${clr}`);
   }
 
   const colorType: ColorType = {
