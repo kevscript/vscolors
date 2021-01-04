@@ -100,4 +100,49 @@ describe('getColorType function', () => {
 
     expect(hslaObject).to.eql(expectedHslaObject);
   });
+
+  it('can parse unformatted inputs with unnecessary spaces', () => {
+    const unformattedHex = '   #333333 ';
+    const hexObject = getColorType(unformattedHex);
+    expect(hexObject.type).to.eql("hex");
+
+    const unformattedRgb = ' rgb(255 , 255 ,0 ) ';
+    const rgbObject = getColorType(unformattedRgb);
+    expect(rgbObject.type).to.eql("rgb");
+
+    const unformattedRgba = ' rgba(255 , 255 ,0, 0.8 ) ';
+    const rgbaObject = getColorType(unformattedRgba);
+    expect(rgbaObject.type).to.eql("rgba");
+
+    const unformattedHsl = ' hsl( 190 , 30%, 25% ) ';
+    const hslObject = getColorType(unformattedHsl);
+    expect(hslObject.type).to.eql("hsl");
+
+    const unformattedHsla = ' hsla( 190 , 30%, 25% ,0.8 ) ';
+    const hslaObject = getColorType(unformattedHsla);
+    expect(hslaObject.type).to.eql("hsla");
+  });
+
+  it("returns Errors when can't recognize inputs", () => {
+    const hex5Digits = '#33333';
+    expect(() => getColorType(hex5Digits)).to.throw(Error);
+
+    const hexSpacedOut = '#333 333';
+    expect(() => getColorType(hexSpacedOut)).to.throw(Error);
+
+    const hexSpacedOutAndUntrimed = '  #3333 3';
+    expect(() => getColorType(hexSpacedOutAndUntrimed)).to.throw(Error);
+
+    const rgbLackingB = 'rg(255,255,0)';
+    expect(() => getColorType(rgbLackingB)).to.throw(Error);
+
+    const hslWithoutPerc = 'hsl(190,50,50%)';
+    expect(() => getColorType(hslWithoutPerc)).to.throw(Error);
+
+    const hslaWithoutAlpha = 'hsla(190,50%,50%)';
+    expect(() => getColorType(hslaWithoutAlpha)).to.throw(Error);
+
+    const rgbaWithoutAlpha = 'rgba(255,255,0)';
+    expect(() => getColorType(rgbaWithoutAlpha)).to.throw(Error);
+  });
 });
