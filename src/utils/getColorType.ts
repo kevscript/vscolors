@@ -40,7 +40,8 @@ export function getColorType(clr: string) {
     }
   ];
 
-  const matchingType = colorTypes.find((type) => type.regex.test(clr) === true);
+  const color = clr.trim();
+  const matchingType = colorTypes.find((type) => type.regex.test(color) === true);
   if (!matchingType) {
     vscode.window.showErrorMessage(`Can't resolve color format of ${clr}`);
     throw new Error(`Can't resolve color format of ${clr}`);
@@ -48,7 +49,7 @@ export function getColorType(clr: string) {
 
   const colorType: ColorType = {
     type: matchingType.type,
-    value: clr
+    value: color
   };
   
   return colorType;
