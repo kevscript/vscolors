@@ -1,5 +1,3 @@
-import * as vscode from 'vscode';
-
 // RGB TO HEX
 export function rgbToHex(rgbArr: number[]) {
   return '#' + rgbArr.map(x => {
@@ -8,6 +6,7 @@ export function rgbToHex(rgbArr: number[]) {
   }).join('');
 }
 
+// RGB TO HEXA
 export function rgbToHexa(rgbArr: number[]) {
   const hex = rgbArr.map(x => {
     const clr = x.toString(16);
@@ -42,6 +41,6 @@ export function rgbaToHex([r, g, b, a]: number[]) {
   } else if (a < 1) {
     return rgbaToHexa([r, g, b, a]);
   } else {
-    throw new Error('error in rgbaToHex()');
+    throw new Error(`Error in rgbaToHex()`);
   }
 }

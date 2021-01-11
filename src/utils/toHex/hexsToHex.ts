@@ -33,12 +33,15 @@ export function hexaToHex(clr: string) {
   throw new Error(`Error in hexaToHex().`);
 }
 
-// HEW TO HEXA
+// HEX TO HEXA
 export function hexToHexa(hex: string) {
   if (hex.length === 4) {
     return `${hex}f`;
   } else if (hex.length === 7) {
     return `${hex}ff`;
+  } else {
+    vscode.window.showErrorMessage(`Can't parse Hex-life input ${hex} to Hexa.`);
+    throw new Error(`Can't parse Hex-life input ${hex} to Hexa.`);
   }
 }
 
