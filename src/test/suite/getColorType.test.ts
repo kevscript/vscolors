@@ -1,10 +1,7 @@
 import { expect } from 'chai';
-import * as vscode from 'vscode';
 import { getColorType } from '../../utils/getColorType';
 
 describe('getColorType function', () => {
-  vscode.window.showInformationMessage('Start tests for getColorType');
-
   it('recognizes HEX colors', () => {
     const hexInput = '#333333';
     const hexObject = getColorType(hexInput);
