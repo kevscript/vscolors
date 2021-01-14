@@ -10,7 +10,7 @@ describe ('HEX formatting functions', () => {
     expect(hex).to.eql('#333');
   });
 
-  it('throws Error on bad hex input', () => {
+  it('throws an Error on bad hex input', () => {
     const hexLikeInput = '#3333'; // 4 digits
     expect(() => formatHex(hexLikeInput)).to.throw(Error);
   });
@@ -39,6 +39,32 @@ describe('RGB formatting functions', () => {
     const rgba = formatRgba(rgbaInput);
     expect(rgba).to.eql([255, 255, 0, 0.8]);
   });
+
+  it('throws an Error when the rgb values of an RGB are not in range of [0-255]', () => {
+    const rgbInput1 = 'rgba(256,255, 0)';
+    const rgbInput2 = 'rgba(255,-80, 0)';
+    expect(() => formatRgba(rgbInput1)).to.throw(Error);
+    expect(() => formatRgba(rgbInput2)).to.throw(Error);
+  });
+
+  it('throws an Error when the rgb values of an RGBA are not in range of [0-255]', () => {
+    const rgbaInput1 = 'rgba(256,255, 0, 0.8)';
+    const rgbaInput2 = 'rgba(255,-80, 0, 0.8)';
+    expect(() => formatRgba(rgbaInput1)).to.throw(Error);
+    expect(() => formatRgba(rgbaInput2)).to.throw(Error);
+  });
+
+  it('formats the opacity to 1 if the alpha input is higher.', () => {
+    const rgbaInput = 'rgba(255,255, 0, 1.8)';
+    const rgba = formatRgba(rgbaInput);
+    expect(rgba).to.eql([255, 255, 0, 1]);
+  });
+
+  it('formats the opacity to 0 if the alpha input is lower.', () => {
+    const rgbaInput = 'rgba(255,255, 0, -1)';
+    const rgba = formatRgba(rgbaInput);
+    expect(rgba).to.eql([255, 255, 0, 0]);
+  });
 });
 
 describe('HSL formatting functions', () => {
@@ -49,9 +75,21 @@ describe('HSL formatting functions', () => {
   });
 
   it('formats hsl input with "deg" labels to hsl array [h, s, l]', () => {
-    const hslInput = ' hsl(260, 85deg, 65deg)';
+    const hslInput = ' hsl(260deg, 85%, 65%)';
     const hsl = formatHsl(hslInput);
     expect(hsl).to.eql([260, 85, 65]);
+  });
+
+  it('formats hsl input with "rad" labels to hsl array [h, s, l]', () => {
+    const hslInput = ' hsl(4.53rad, 85%, 65d%)';
+    const hsl = formatHsl(hslInput);
+    expect(hsl).to.eql([260, 85, 65]);
+  });
+
+  it('formats hsl input with "turn" labels to hsl array [h, s, l]', () => {
+    const hslInput = ' hsl(0.8turn, 85%, 65d%)';
+    const hsl = formatHsl(hslInput);
+    expect(hsl).to.eql([288, 85, 65]);
   });
 
   it('formats hsla input to hsla array [h, s, l, a]', () => {
