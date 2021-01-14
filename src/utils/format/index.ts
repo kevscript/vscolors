@@ -15,9 +15,7 @@ export type FormatedColorArrayType = {
 };
 
 export function formatColor(colorType: ColorType) {
-
   switch (colorType.type) {
-
     case "rgb":
       return { 
         type: colorType.type, 

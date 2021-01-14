@@ -6,22 +6,18 @@ export function formatRgb(clr: string) {
 
   const rgbValues = rgbColors.map(x => {
     // if value is a percentage parse it into 0-255 value
-    // return x.includes("%") ? Math.round((parseFloat(x.replace(/\%/g, "")) / 100) * 255) : parseInt(x);
-
     if (x.includes("%")) {
-      const number = parseFloat(x.replace(/\%/g, ""));
-      if (number <= 0) {return 0;};
-      if (number >= 100) {return 255;};
-      return Math.round((number / 100) * 255);
+      const number = Math.round(parseFloat(x.replace(/\%/g, "")) * 2.55);
+      if ((number > 255) || (number < 0)) { throw Error(`RGB value out of range [0-255] in ${rgb}`); }
+      return number;
     } else {
       const number = parseInt(x);
-      if (number <= 0) {return 0;};
-      if (number >= 255) {return 255;};
+      if ((number > 255) || (number < 0)) { throw Error(`RGB value out of range [0-255] in ${rgb}`); }
       return number;
     }
   });
 
-  return [ rgbValues[0], rgbValues[1], rgbValues[2] ];
+  return [rgbValues[0], rgbValues[1], rgbValues[2]];
 }
 
 
@@ -31,22 +27,21 @@ export function formatRgba(clr: string) {
 
   const rgbaValues = rgbaColors.map((x, i) => {
     // if current value is the opacity
-    if (i === rgbaColors.length - 1) {
-      return parseFloat(x);
+    if (i === rgbaColors.length - 1) { 
+      const alpha = parseFloat(x); 
+      alpha >= 1 ? 1 : alpha <= 0 ? 0 : alpha;
     }
 
     if (x.includes("%")) {
-      const number = parseFloat(x.replace(/\%/g, ""));
-      if (number <= 0) {return 0;};
-      if (number >= 100) {return 255;};
-      return Math.round((number / 100) * 255);
+      const number = Math.round(parseFloat(x.replace(/\%/g, "")) * 2.55);
+      if ((number > 255) || (number < 0)) { throw Error(`RGB value out of range [0-255] in ${rgba}`); }
+      return number;
     } else {
       const number = parseInt(x);
-      if (number <= 0) {return 0;};
-      if (number >= 255) {return 255;};
+      if ((number > 255) || (number < 0)) { throw Error(`RGB value out of range [0-255] in ${rgba}`); }
       return number;
     }
   });
 
-  return [ rgbaValues[0], rgbaValues[1], rgbaValues[2], rgbaValues[3]];
+  return [rgbaValues[0], rgbaValues[1], rgbaValues[2], rgbaValues[3]];
 }
