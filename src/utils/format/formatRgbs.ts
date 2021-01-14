@@ -29,7 +29,7 @@ export function formatRgba(clr: string) {
     // if current value is the opacity
     if (i === rgbaColors.length - 1) { 
       const alpha = parseFloat(x); 
-      alpha >= 1 ? 1 : alpha <= 0 ? 0 : alpha;
+      return alpha >= 1 ? 1 : alpha <= 0 ? 0 : alpha;
     }
 
     if (x.includes("%")) {
