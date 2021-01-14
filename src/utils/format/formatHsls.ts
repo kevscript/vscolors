@@ -14,9 +14,9 @@ export function formatHsl(clr: string) {
   let l = parseInt(hslArr[2].substr(0, hslArr[2].length - 1));  
 
   // strip label and convert to degrees (if necessary)
-  if (h.indexOf("deg") > -1) {h = h.substr(0, h.length - 3);}
-  else if (h.indexOf("rad") > -1) {h = Math.round((h.substr(0, h.length - 3)) * (180 / Math.PI)); }
-  else if (h.indexOf("turn") > -1) {h = Math.round((h.substr(0, h.length - 4)) * 360);}
+  if (h.indexOf("deg") > -1) {h = parseFloat(h);}
+  else if (h.indexOf("rad") > -1) {h = Math.round(parseFloat(h) * (180 / Math.PI)); }
+  else if (h.indexOf("turn") > -1) {h = Math.round(parseFloat(h) * 360);}
   if (h >= 360) {h %= 360;}
 
   // if values are under 0 or over 100, return 0 or 100
@@ -46,9 +46,9 @@ export function formatHsla(clr: string) {
   let a = parseFloat(hslaArr[3]) >= 1 ? 1 : parseFloat(hslaArr[3]);
 
   // strip label and convert to degrees (if necessary)
-  if (h.indexOf("deg") > -1) {h = h.substr(0,h.length - 3);}
-  else if (h.indexOf("rad") > -1) {h = Math.round((h.substr(0,h.length - 3)) * (180 / Math.PI));}
-  else if (h.indexOf("turn") > -1) {h = Math.round((h.substr(0,h.length - 4)) * 360);}
+  if (h.indexOf("deg") > -1) {h = parseFloat(h);}
+  else if (h.indexOf("rad") > -1) {h = Math.round(parseFloat(h) * (180 / Math.PI));}
+  else if (h.indexOf("turn") > -1) {h = Math.round(parseFloat(h) * 360);}
   if (h >= 360) {h %= 360;}
 
   // if values are under 0 or over 100, return 0 or 100
