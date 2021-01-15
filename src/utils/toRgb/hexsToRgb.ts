@@ -14,6 +14,8 @@ export function hexToRgb(hex: string) {
     r = "0x" + hex[1] + hex[2];
     g = "0x" + hex[3] + hex[4];
     b = "0x" + hex[5] + hex[6];
+  } else {
+    throw Error(`Hex input is not valid`);
   }
   
   return "rgb("+ +r + ", " + +g + ", " + +b + ")";
@@ -29,12 +31,13 @@ export function hexToRgba(hex: string) {
     r = "0x" + hex[1] + hex[1];
     g = "0x" + hex[2] + hex[2];
     b = "0x" + hex[3] + hex[3];
-
   // 6 digits
   } else if (hex.length === 7) {
     r = "0x" + hex[1] + hex[2];
     g = "0x" + hex[3] + hex[4];
     b = "0x" + hex[5] + hex[6];
+  } else {
+    throw Error(`Hex input is not valid`);
   }
   
   return "rgba("+ +r + ", " + +g + ", " + +b + ", 1)";
@@ -54,10 +57,13 @@ export function hexaToRgba(h: string) {
     g = "0x" + h[3] + h[4];
     b = "0x" + h[5] + h[6];
     a = "0x" + h[7] + h[8];
+  } else {
+    throw Error(`Hex input is not valid`);
   }
+
   a = +(a / 255).toFixed(2);
 
-  return "rgba(" + +r + "," + +g + "," + +b + "," + a + ")";
+  return "rgba(" + +r + ", " + +g + ", " + +b + ", " + a + ")";
 }
 
 export function hexaToRgb(clr: string) {
@@ -81,7 +87,7 @@ export function hexaToRgb(clr: string) {
     } else {
       return hexaToRgba(clr);
     }
-  }
+  } 
 
   throw new Error(`Error in hexaToRgb().`);
 }

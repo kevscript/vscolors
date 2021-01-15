@@ -6,6 +6,10 @@ export function rgbaToRgba([r, g, b, a]: number[]) {
   return `rgba(${r}, ${g}, ${b}, ${a})`;
 }
 
+export function rgbToRgba([r, g, b]: number[]) {
+  return `rgba(${r}, ${g}, ${b}, 1)`;
+}
+
 export function rgbaToRgb([r, g, b, a]: number[]) {
   if (a === 1) {
     return rgbToRgb([r, g, b]);

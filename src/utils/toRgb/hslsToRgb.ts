@@ -59,15 +59,19 @@ export function hslaToRgba([h, s, l, a]: number[]) {
   g = Math.round((g + m) * 255);
   b = Math.round((b + m) * 255);
 
-  return "rgba(" + r + "," + g + "," + b + "," + a + ")";
+  return "rgba(" + r + ", " + g + ", " + b + ", " + a + ")";
 }
 
 export function hslaToRgb([h, s, l, a]: number[]) {
   if (a === 1) {
     return hslToRgb([h, s, l]);
-  } else if (a < 1) {
+  } else if (a < 1 && a >= 0) {
     return hslaToRgba([h, s, l, a]);
   } else {
     throw new Error("error in hslaToRgb()");
   }
+}
+
+export function hslToRgba([h, s, l]: number[]) {
+  return hslaToRgba([h, s, l, 1]);
 }
