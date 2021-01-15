@@ -88,7 +88,7 @@ export function rgbaToHsla([rr, gg, bb, a]: number[]) {
   s = +(s * 100).toFixed(1);
   l = +(l * 100).toFixed(1);
 
-  return "hsl(" + h + ", " + Math.round(s) + "%, " + Math.round(l) + "%, " + a + ")";
+  return "hsla(" + h + ", " + Math.round(s) + "%, " + Math.round(l) + "%, " + a + ")";
 }
 
 // RGBA TO HSL

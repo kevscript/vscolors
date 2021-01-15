@@ -1,3 +1,5 @@
+import { formatHsl } from '../format/formatHsls';
+
 // HEX TO HSL
 export function hexToHsl(clr: string) {
   const hex = clr.replace(/\s/g, "");
@@ -51,8 +53,9 @@ export function hexToHsl(clr: string) {
 
 // HEX TO HSLA
 export function hexToHsla(clr: string) {
-  const hex = hexToHsl(clr);
-  return `${hex}ff`;
+  const hsl = hexToHsl(clr);
+  const formattedHsl = formatHsl(hsl);
+  return `hsla(${formattedHsl[0]}, ${formattedHsl[1]}%, ${formattedHsl[2]}%, 1)`;
 }
 
 // HEXA TO HSLA
@@ -102,7 +105,7 @@ export function hexaToHsla(hexa: string) {
   s = delta === 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
   s = +(s * 100).toFixed(1);
   l = +(l * 100).toFixed(1);
-  a = (a / 255).toFixed(2);
+  a = parseFloat((a / 255).toFixed(2));
 
   return "hsla("+ h + ", " + Math.round(s) + "%, " + Math.round(l) + "%, " + a + ")";
 }
@@ -127,7 +130,7 @@ export function hexaToHsl(clr: string) {
       const hex = arr.join('');
       return hexToHsl(hex);
     } else {
-      return hexaToHsla(clr);
+      throw Error("Can't parse a short hexa with custom opacity");
     }
   }
 
