@@ -2,7 +2,7 @@
   "name": "vscolors",
   "displayName": "VSColors",
   "description": "Color Format Converter for VSCode. Supports HEX(A), RGB(A) and HSL(A) formats.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "engines": {
     "vscode": "^1.52.0"
   },
