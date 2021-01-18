@@ -2,11 +2,11 @@
 
 VSColors is a VS Code extension helping you with color type conversions. It handles basic HEX, RGB and HSL colors, alongside their Alpha formats for opacity.
 
+## How it Works
+
+Highlight your color, and right-click it. You should see options to convert your colors in the navigation.
+
 ## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
 
 This extension contributes the following settings:
 
