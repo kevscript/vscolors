@@ -6,6 +6,17 @@
   "engines": {
     "vscode": "^1.52.0"
   },
+  "publisher": "kevscript",
+  "author": {
+    "name": "Kevin Ostafinski"
+  },
+  "homepage": "https://github.com/kevscript/vscolors",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kevscript/vscolors"
+  },
+  "icon": "icon.png",
+  "keywords": ["vscolors", "color converter", "convert colors", "hex to rgb", "rgb to hex", "hex converter", "rgb converter", "hsl converter", "color parser"],
   "categories": [
     "Other"
   ],
