@@ -6,7 +6,7 @@ VSColors is a VS Code extension helping you with color type conversions. It hand
 
 Highlight your color, and right-click it. You should see options to convert your colors in the navigation.
 
-![how it works](./vscolors.gif)
+![how it works](https://github.com/kevscript/vscolors/blob/main/vscolors.gif)
 
 ## Extension Settings
 
