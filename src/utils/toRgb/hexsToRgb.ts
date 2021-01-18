@@ -1,3 +1,5 @@
+import * as vscode from 'vscode';
+
 export function hexToRgb(hex: string) {
   let r: number | string = 0;
   let g: number | string = 0;
@@ -15,6 +17,7 @@ export function hexToRgb(hex: string) {
     g = "0x" + hex[3] + hex[4];
     b = "0x" + hex[5] + hex[6];
   } else {
+    vscode.window.showErrorMessage(`Hex input is not valid`);
     throw Error(`Hex input is not valid`);
   }
   
@@ -37,6 +40,7 @@ export function hexToRgba(hex: string) {
     g = "0x" + hex[3] + hex[4];
     b = "0x" + hex[5] + hex[6];
   } else {
+    vscode.window.showErrorMessage(`Hex input is not valid`);
     throw Error(`Hex input is not valid`);
   }
   
@@ -58,6 +62,7 @@ export function hexaToRgba(h: string) {
     b = "0x" + h[5] + h[6];
     a = "0x" + h[7] + h[8];
   } else {
+    vscode.window.showErrorMessage(`Hex input is not valid`);
     throw Error(`Hex input is not valid`);
   }
 
@@ -88,6 +93,6 @@ export function hexaToRgb(clr: string) {
       return hexaToRgba(clr);
     }
   } 
-
+  vscode.window.showErrorMessage(`Error in hexaToRgb().`);
   throw new Error(`Error in hexaToRgb().`);
 }

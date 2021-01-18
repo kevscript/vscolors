@@ -30,6 +30,7 @@ export function hexaToHex(clr: string) {
     }
   }
 
+  vscode.window.showErrorMessage(`Error in hexaToHex().`);
   throw new Error(`Error in hexaToHex().`);
 }
 

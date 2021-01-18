@@ -1,3 +1,5 @@
+import * as vscode from 'vscode';
+
 // RGB TO HEX
 export function rgbToHex(rgbArr: number[]) {
   return '#' + rgbArr.map(x => {
@@ -41,6 +43,7 @@ export function rgbaToHex([r, g, b, a]: number[]) {
   } else if (a < 1) {
     return rgbaToHexa([r, g, b, a]);
   } else {
+    vscode.window.showErrorMessage('error in hslaToHex()');
     throw new Error(`Error in rgbaToHex()`);
   }
 }

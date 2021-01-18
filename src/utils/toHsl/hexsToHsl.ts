@@ -1,3 +1,4 @@
+import * as vscode from 'vscode';
 import { formatHsl } from '../format/formatHsls';
 
 // HEX TO HSL
@@ -130,9 +131,10 @@ export function hexaToHsl(clr: string) {
       const hex = arr.join('');
       return hexToHsl(hex);
     } else {
+      vscode.window.showErrorMessage("Can't parse a short hexa with custom opacity");
       throw Error("Can't parse a short hexa with custom opacity");
     }
   }
-
+  vscode.window.showErrorMessage(`Error in hexaToHsl().`);
   throw new Error(`Error in hexaToHsl().`);
 }

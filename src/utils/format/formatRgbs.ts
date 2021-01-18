@@ -1,3 +1,5 @@
+import * as vscode from 'vscode';
+
 export function formatRgb(clr: string) {
   // remove all whitespace
   const rgb = clr.replace(/\s/g, "");
@@ -8,11 +10,17 @@ export function formatRgb(clr: string) {
     // if value is a percentage parse it into 0-255 value
     if (x.includes("%")) {
       const number = Math.round(parseFloat(x.replace(/\%/g, "")) * 2.55);
-      if ((number > 255) || (number < 0)) { throw Error(`RGB value out of range [0-255] in ${rgb}`); }
+      if ((number > 255) || (number < 0)) { 
+        vscode.window.showErrorMessage(`RGB value out of range [0-255] in ${rgb}`);
+        throw Error(`RGB value out of range [0-255] in ${rgb}`); 
+      }
       return number;
     } else {
       const number = parseInt(x);
-      if ((number > 255) || (number < 0)) { throw Error(`RGB value out of range [0-255] in ${rgb}`); }
+      if ((number > 255) || (number < 0)) { 
+        vscode.window.showErrorMessage(`RGB value out of range [0-255] in ${rgb}`);
+        throw Error(`RGB value out of range [0-255] in ${rgb}`); 
+      }
       return number;
     }
   });
@@ -34,11 +42,17 @@ export function formatRgba(clr: string) {
 
     if (x.includes("%")) {
       const number = Math.round(parseFloat(x.replace(/\%/g, "")) * 2.55);
-      if ((number > 255) || (number < 0)) { throw Error(`RGB value out of range [0-255] in ${rgba}`); }
+      if ((number > 255) || (number < 0)) { 
+        vscode.window.showErrorMessage(`RGB value out of range [0-255] in ${rgba}`);
+        throw Error(`RGB value out of range [0-255] in ${rgba}`); 
+      }
       return number;
     } else {
       const number = parseInt(x);
-      if ((number > 255) || (number < 0)) { throw Error(`RGB value out of range [0-255] in ${rgba}`); }
+      if ((number > 255) || (number < 0)) { 
+        vscode.window.showErrorMessage(`RGB value out of range [0-255] in ${rgba}`);
+        throw Error(`RGB value out of range [0-255] in ${rgba}`); 
+      }
       return number;
     }
   });

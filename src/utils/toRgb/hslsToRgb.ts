@@ -1,3 +1,5 @@
+import * as vscode from 'vscode';
+
 export function hslToRgb([h, s, l]: number[]) {
   // Must be fractions of 1
   s /= 100;
@@ -68,6 +70,7 @@ export function hslaToRgb([h, s, l, a]: number[]) {
   } else if (a < 1 && a >= 0) {
     return hslaToRgba([h, s, l, a]);
   } else {
+    vscode.window.showErrorMessage("error in hslaToRgb()");
     throw new Error("error in hslaToRgb()");
   }
 }

@@ -1,3 +1,5 @@
+import * as vscode from 'vscode';
+
 // HSL TO HEX
 export function hslToHex([h, s, l]: number[]) {
   // Must be fractions of 1
@@ -90,6 +92,7 @@ export function hslaToHex([h, s, l, a]: number[]) {
   } else if (a < 1) {
     return hslaToHexa([h, s, l, a]);
   } else {
+    vscode.window.showErrorMessage('error in hslaToHex()');
     throw new Error('error in hslaToHex()');
   }
 }

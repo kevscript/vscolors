@@ -1,8 +1,8 @@
+import * as vscode from 'vscode';
 import { FormatedColorArrayType, FormatedColorStringType } from '../format';
 import { hexToHsl, hexaToHsl } from './hexsToHsl';
 import { hslToHsl, hslaToHsl } from './hslsToHsl';
 import { rgbToHsl , rgbaToHsl } from './rgbsToHsl';
-
 
 export function toHsl(formatedColor: FormatedColorArrayType | FormatedColorStringType) {
   switch(formatedColor.type) {
@@ -31,6 +31,7 @@ export function toHsl(formatedColor: FormatedColorArrayType | FormatedColorStrin
       break;
 
     default:
+      vscode.window.showErrorMessage('error from toHsl()');
       throw new Error('error from toHsl()');
       break;
   }

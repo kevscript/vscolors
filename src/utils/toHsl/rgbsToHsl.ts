@@ -1,3 +1,5 @@
+import * as vscode from 'vscode';
+
 // RGB TO HSL
 export function rgbToHsl([rr, gg, bb]: number[]) {
   // Make r, g, and b fractions of 1
@@ -98,6 +100,7 @@ export function rgbaToHsl([r, g, b, a]: number[]) {
   } else if (a < 1) {
     return rgbaToHsla([r, g, b, a]);
   } else {
+    vscode.window.showErrorMessage("error in rgbaToHsl()");
     throw new Error("error in rgbaToHsl()");
   }
 }

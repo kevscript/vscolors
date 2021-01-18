@@ -1,3 +1,4 @@
+import * as vscode from 'vscode';
 import { FormatedColorArrayType, FormatedColorStringType } from '../format';
 import { hexToRgb, hexaToRgb } from './hexsToRgb';
 import { hslToRgb, hslaToRgb } from './hslsToRgb';
@@ -30,6 +31,7 @@ export function toRgb(formatedColor: FormatedColorStringType | FormatedColorArra
       break;
   
     default:
+      vscode.window.showErrorMessage('error from toRgb()');
       throw new Error('error from toRgb()');
       break;
   }

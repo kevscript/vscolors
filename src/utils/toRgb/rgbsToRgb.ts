@@ -1,3 +1,5 @@
+import * as vscode from 'vscode';
+
 export function rgbToRgb(rgbArr: number[]) {
   return `rgb(${rgbArr[0]}, ${rgbArr[1]}, ${rgbArr[2]})`;
 }
@@ -16,6 +18,7 @@ export function rgbaToRgb([r, g, b, a]: number[]) {
   } else if (a < 1) {
     return rgbaToRgba([r, g, b, a]);
   } else {
+    vscode.window.showErrorMessage('error in rgbaToRgb()');
     throw new Error('error in rgbaToRgb()');
   }
 }

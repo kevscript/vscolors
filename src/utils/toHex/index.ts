@@ -1,3 +1,4 @@
+import * as vscode from 'vscode';
 import { FormatedColorStringType, FormatedColorArrayType } from '../format';
 import { hexToHex, hexaToHex } from './hexsToHex';
 import { rgbToHex, rgbaToHex } from './rgbsToHex';
@@ -30,6 +31,7 @@ export function toHex(formatedColor: FormatedColorStringType | FormatedColorArra
       break;
 
     default:
+      vscode.window.showErrorMessage('error from toHex()');
       throw new Error('error from toHex()');
       break;
   }
