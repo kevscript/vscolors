@@ -32,11 +32,11 @@ export function getColorType(clr: string) {
     },
     {
       type: "hex",
-      regex: /^#([\da-f]{3}){1,2}$/i
+      regex: /^#([\da-f]{3}){1,2}$/gi
     },
     {
       type: "hexa",
-      regex: /^#([\da-f]{4}){1,2}$/i
+      regex: /^#([\da-f]{4}){1,2}$/gi
     }
   ];
 
