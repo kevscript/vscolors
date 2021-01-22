@@ -6,7 +6,7 @@ VSColors is a VS Code extension helping you with color type conversions. It hand
 
 Highlight your color, and right-click it. You should see options to convert your colors in the navigation.
 
-![how it works](https://media1.giphy.com/media/i2Fxh6NLqr8EMBvPCR/giphy.gif)
+![how it works](https://media.giphy.com/media/5s8vrQ3IiZMvDAZNYk/giphy.gif)
 
 ## Extension Settings
 
@@ -16,7 +16,8 @@ This extension contributes the following settings:
 - `vscolors.color2Rgb`: converts highlighted color to an RGB value
 - `vscolors.color2Hsl`: converts highlighted color to an HSL value
 
-## Known Issues
+## Additional Informations
 
 Extension doesn't handle implicit alpha values.
+
 For example `rgba(255, 255, 0)` will yield an error as RGBA format expects an alpha value.

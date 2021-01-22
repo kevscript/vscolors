@@ -16,7 +16,7 @@
     "url": "https://github.com/kevscript/vscolors"
   },
   "icon": "icon.png",
-  "keywords": ["vscolors", "color converter", "convert colors", "hex to rgb", "rgb to hex", "hex converter", "rgb converter", "hsl converter", "color parser"],
+  "keywords": ["vscolors", "color converter", "convert colors", "hex to rgb", "rgb to hex", "hex converter", "rgb converter", "hsl converter", "color parser", "color format", "color type"],
   "categories": [
     "Other"
   ],
@@ -46,17 +46,17 @@
         {
           "when": "editorHasSelection",
           "command": "vscolors.color2Hex",
-          "group": "navigation"
+          "group": "1_modification"
         },
         {
           "when": "editorHasSelection",
           "command": "vscolors.color2Rgb",
-          "group": "navigation"
+          "group": "1_modification"
         },
         {
           "when": "editorHasSelection",
           "command": "vscolors.color2Hsl",
-          "group": "navigation"
+          "group": "1_modification"
         }
       ]
     }
