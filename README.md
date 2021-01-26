@@ -1,3 +1,5 @@
+[Download VSColors from the MarketPlace](https://marketplace.visualstudio.com/items?itemName=kevscript.vscolors)
+
 ## Features
 
 VSColors is a VS Code extension helping you with color type conversions. It handles basic HEX, RGB and HSL colors, alongside their Alpha formats for opacity.
