@@ -1,4 +1,4 @@
-Unmaintained.
+Unmaintained. Is not up-to-date with the latest CSS features.
 
 If you have any questions, please feel free to contact me at [__@kevscript__](https://twitter.com/kevscript).
 
