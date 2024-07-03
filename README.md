@@ -1,6 +1,6 @@
-Its my first extension! Leave a rating and share your thoughts on it to help me learn and understand your expectations.
+Unmaintained.
 
-If you have any questions or recommandations, please feel free to contact me at [__@kevscript__](https://twitter.com/kevscript).
+If you have any questions, please feel free to contact me at [__@kevscript__](https://twitter.com/kevscript).
 
 
 ## **Features**
