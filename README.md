@@ -1,4 +1,4 @@
-Unmaintained. Is not up-to-date with the latest CSS features.
+Unmaintained. Is not up-to-date with the latest CSS color syntaxes.
 
 If you have any questions, please feel free to contact me at [__@kevscript__](https://twitter.com/kevscript).
 
